@@ -1,5 +1,6 @@
 services:
   coolify:
+    container_name: Coolify_fronted
     image: "ghcr.io/coollabsio/coolify:${LATEST_IMAGE:-latest}"
     volumes:
       - type: bind
@@ -38,6 +39,8 @@ services:
       soketi:
         condition: service_healthy
   postgres:
+    container_name: Coolify_postgress
+    image: postgres:14
     volumes:
       - coolify-db:/var/lib/postgresql/data
     environment:
